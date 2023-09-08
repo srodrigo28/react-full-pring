@@ -9,19 +9,21 @@
 </head>
 <body class="container">
     <h1>Home</h1>
-    <div class="pedidos" th:each="pedido : ${pedidos}">
-        <h3 th:text="${pedido.nome}"></h3>
-        <p >Valor: <strong th:text="${pedido.valor}"></strong></p>
-        <p>Data da entrega: <strong>10/10/2023</strong></p>
-
-        <p>Produto</p>
-        <p>Url do produto: <input th:value="${pedido.urlProduto}" type="text" class="form-control"></p>
-        <div>
-            <textarea th:text="${pedido.descricao}" name="" id="" cols="30" rows="3" class="form-control">
+    <div class="pedidos card alert alert-primary" th:each="pedido : ${pedidos}">
+        <h3 class="card-header mb-3 text-center" > Produto </h3>
+        <p class="alert alert-success" th:text="${pedido.nome}"></p>
+        
+        <div class="row">
+            <div class="col-12 col-sm-8">
+                <p >Valor: <strong th:text="${pedido.valor}"></strong></p>
+                <p>Data da entrega: <strong>10/10/2023</strong></p>
+                <p>Url do produto: <input th:value="${pedido.urlProduto}" type="text" class="form-control"></p>
+                <textarea  th:text="${pedido.descricao}" name="" id="" cols="30" rows="3" class="form-control">
                 
-            </textarea>
-            <div class="card">
-                <img th:src="${pedido.urlImagem}" alt="imagem do produto" width="500">
+                </textarea>
+            </div>
+            <div class="col-12 col-sm-4 mt-2">
+                <img class="img-thumbnail" th:src="${pedido.urlImagem}" alt="imagem do produto">
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-export function Tabela( {vetor} ) {
+export function Tabela( {vetor, selecionar} ) {
     return (
         <div className="container-scroll">
             <h1>Lista de Produtos</h1>
@@ -14,13 +14,13 @@ export function Tabela( {vetor} ) {
                 </thead>
                 <tbody>
                     {
-                        vetor.map((item, indice) => (
+                        vetor.map((obj, indice) => (
                             <tr key={indice}>
-                                <td className="text-center">{item.codigo}</td>
-                                <td>{item.nome}</td>
-                                <td>{item.marca}</td>
-                                <td>{item.preco}</td>
-                                <td> <button className="btn btn-outline-success">Selecionar</button> </td>
+                                <td className="text-center">{indice+1}</td>
+                                <td>{obj.nome}</td>
+                                <td>{obj.marca}</td>
+                                <td>{obj.preco}</td>
+                                <td> <button onClick={ () => {selecionar(indice)} } className="btn btn-outline-success">Selecionar</button> </td>
                             </tr>
                         ))
                     }

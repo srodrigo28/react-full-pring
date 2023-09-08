@@ -1,17 +1,17 @@
-export function Produto( {botao, eventoTeclado, cadastrar} ) {
+export function Produto( {botao, eventoTeclado, cadastrar, obj} ) {
     return (
         <div>
             <h1>Produtos</h1>
             <form>
                 <div className="row g-3 mb-3">
                     <div className="col-auto">
-                        <input type="text" name="nome" onChange={eventoTeclado}  className="form-control" />
+                        <input type="text" value={obj.nome} name="nome" onChange={eventoTeclado}  className="form-control" />
                     </div>
                     <div className="col-auto">
-                        <input type="text" name="marca" onChange={eventoTeclado} className="form-control" />
+                        <input type="text"  value={obj.marca} name="marca" onChange={eventoTeclado} className="form-control" />
                     </div>
                     <div className="col-auto">
-                        <input type="text" name="preco" onChange={eventoTeclado} className="form-control" />
+                        <input type="text" value={obj.preco} name="preco" onChange={eventoTeclado} className="form-control" />
                     </div>
                 </div>
                 {

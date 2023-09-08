@@ -38,10 +38,30 @@ function App() {
       })
         .then(retorno => retorno.json())
         .then(retorno_convertido => {
-          console.log(retorno_convertido)
+          //console.log(retorno_convertido)
+
+          if (retorno_convertido.messagem !== undefined || null) {
+            alert(retorno_convertido.messagem)
+            return false;
+          } else {
+            setProdutos([...produtos, retorno_convertido]);
+            alert('Cadastrado com suceso!')
+            limparFormulario();
+          }
         })
         // console.log(e.target);
     }
+  
+  // Limpar os campso
+  const limparFormulario = () => {
+    setObjProduto(produto);
+  }
+
+  // Selecionar produto
+  const selecionarProduto = (indice) => {
+    setObjProduto(produto[indice]);
+    setBtnCadastrar(false);
+  }
   
     return (
       <div className="container mt-3">
@@ -51,8 +71,12 @@ function App() {
           botao={btnCadastrar}
           eventoTeclado={aoDigitar}
           cadastrar={cadastrar}
+          obj={objProduto}
         />
-        <Tabela vetor={produtos} />
+        <Tabela
+          vetor={produtos}
+          selecionar={selecionarProduto}
+        />
       </div>
     );
   }
